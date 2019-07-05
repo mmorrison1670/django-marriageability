@@ -1,12 +1,13 @@
-
 {% extends 'base.html' %}
 {% block title %}
   Homepage - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-  <h1>Hello World!</h1>
-  <p>What is your marriageability score?</p>
-  <!-- here's the variable we are passing in -->
-  <p>{{ number }}</p>
+    {% for score in scores %}
+        <h2><a href="{% url 'score_detail' slug=score.slug %}">
+            {{ score.name }}
+        </a></h2>
+        <p>{{ score.description }}</p>
+    {% endfor %}
 {% endblock content %}

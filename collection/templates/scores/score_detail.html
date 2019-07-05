@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ score.name }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ score.name }}</h1>
+    <p>{{ score.description }}</p>
+    <a href="{% url 'edit_score' slug=score.slug %}">
+      Edit me!
+    </a>
+{% endblock content %}
