@@ -13,11 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from collection.backends import MyRegistrationView
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from collection import views
-from collection.backends import MyRegistrationView
 from django.contrib.auth.views import (
     password_reset,
     password_reset_done,
@@ -53,10 +53,12 @@ urlpatterns = [
         password_reset_complete,
         {'template_name': 'registration/password_reset_complete.html'},
         name="password_reset_complete"),
-    path('accounts/', include('registration.backends.simple.urls')),
-    path('admin/', admin.site.urls),
+
     path('accounts/register/', MyRegistrationView.as_view(),
         name='registration_register'),
-    path('accounts/create_thing/', views.create_thing,
-        name='registration_create_thing'),
+    path('accounts/create_score/', views.create_score,
+        name='registration_create_score'),
+
+    path('accounts/', include('registration.backends.simple.urls')),
+    path('admin/', admin.site.urls),
 ]

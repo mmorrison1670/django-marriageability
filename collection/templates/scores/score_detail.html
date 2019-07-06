@@ -6,7 +6,11 @@
 {% block content %}
     <h1>{{ score.name }}</h1>
     <p>{{ score.description }}</p>
-    <a href="{% url 'edit_score' slug=score.slug %}">
-      Edit me!
-    </a>
+    {% if user == score.user %}
+        <p>
+          <a href="{% url 'edit_score' slug=score.slug %}">
+            Edit me!
+          </a>
+        </p>
+    {% endif %}
 {% endblock content %}

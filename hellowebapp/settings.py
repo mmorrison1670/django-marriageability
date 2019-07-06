@@ -25,7 +25,8 @@ SECRET_KEY = '^zlb&u4$wepytxe(i#(8ugu0fj!rfngcj7rew_f644vrufz-i9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#UPDATE ME BEFORE LAUNCH!
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -120,6 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 ACCOUNT_ACTIVATION_DAYS = 7
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
